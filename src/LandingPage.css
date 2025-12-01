@@ -1,0 +1,82 @@
+/* Restore clean modern font */
+* {
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Metallic pearl white background */
+.landing-container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(
+    145deg,
+    #ffffff,
+    #f3f3f3,
+    #e8e8e8,
+    #ffffff
+  );
+  background-size: 400% 400%;
+  animation: subtleMetal 8s ease-in-out infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 1.4s ease-out forwards, subtleMetal 8s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes subtleMetal {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.landing-content {
+  max-width: 900px;
+  padding: 20px;
+}
+
+/* Bigger square logo — no cropping */
+.landing-logo {
+  width: 340px;
+  height: auto;
+  object-fit: contain; /* prevents cropping */
+  border-radius: 0px;  /* keeps original square shape */
+  margin-bottom: 25px;
+}
+
+/* Title with partial shadow */
+.landing-title {
+  font-size: 52px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.finearts-shadow {
+  text-shadow: 2px 2px 9px rgba(0,0,0,0.35);
+}
+
+.landing-tagline {
+  font-size: 22px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.landing-text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #444;
+  max-width: 850px;
+  margin: 0 auto;
+  margin-top: 20px;
+}

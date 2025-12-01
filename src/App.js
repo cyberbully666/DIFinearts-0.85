@@ -1,22 +1,9 @@
+// App.js
 import React from "react";
-import Navbar from "./Navbar";
-import HeroSection from "./HeroSection";
-import AboutSection from "./AboutSection";
-import FeatureParallax from "./FeatureParallax"; 
-import OfficeArtText from "./OfficeArtText";     
-import Footer from "./Footer"; // ✅ added footer
+import LandingPage from "./LandingPage";
 
 function App() {
-  return (
-    <>
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <FeatureParallax />
-      <OfficeArtText />
-      <Footer /> {/* ✅ footer goes last */}
-    </>
-  );
+  return <LandingPage />;
 }
 
 export default App;
