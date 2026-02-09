@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./HeroSection.css";
 import painting1 from "./assets/artworks/painting1.jpg";
 import painting2 from "./assets/artworks/painting2.jpg";
@@ -26,7 +27,9 @@ function HeroSection() {
         <p className="hero-subtitle">
           Curated artworks from top artists to transform your workspace.
         </p>
-        <button className="cta-button">Browse Catalogue</button>
+        <Link to="/catalogue">
+          <button className="cta-button">Browse Catalogue</button>
+        </Link>
       </div>
     </section>
   );

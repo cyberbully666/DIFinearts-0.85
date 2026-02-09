@@ -1,19 +1,141 @@
-.footer {
+/* =========================
+   FOOTER
+========================= */
+footer.footer {
   background-color: #222;
   color: #fff;
+  font-family: 'Playfair Display', serif;
+  padding: 40px 20px 20px;
+  margin-top: 60px;
   text-align: center;
-  padding: 20px 10px;
-  margin-top: 40px;
 }
 
-.footer-content {
-  max-width: 900px;
-  margin: 0 auto;
-  font-size: 0.9rem;
+footer.footer .footer-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* more space between columns */
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto 30px;
+}
+
+footer.footer .footer-col {
+  flex: 1;
+  min-width: 220px;
+  text-align: left;
+}
+
+footer.footer .footer-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+footer.footer .footer-col p,
+footer.footer .footer-col li {
+  font-size: 0.95rem;
   line-height: 1.6;
+  margin: 6px 0;
   opacity: 0.85;
 }
 
-.footer-content p:first-child {
+footer.footer .footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer.footer .footer-links li a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+footer.footer .footer-links li a:hover {
+  color: #f0c14b;
+}
+
+/* =========================
+   Newsletter Form
+========================= */
+footer.footer .footer-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px; /* small gap */
+  margin-top: 10px;
+}
+
+footer.footer .footer-input {
+  padding: 10px 14px;
+  border-radius: 6px 0 0 6px;
+  border: 2px solid #fff;
+  border-right: none;
+  background: transparent;
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+  flex: 1;
+}
+
+footer.footer .footer-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+footer.footer .footer-button {
+  padding: 10px 16px; /* smaller */
+  border-radius: 0 6px 6px 0;
+  border: 2px solid #fff;
+  background: #111; /* opaque so it’s visible */
+  color: #fff;
   font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+footer.footer .footer-button:hover {
+  background-color: #fff;
+  color: #222;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+
+/* Bottom strip */
+footer.footer .footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 16px;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 768px) {
+  footer.footer .footer-main {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  footer.footer .footer-col {
+    text-align: center;
+  }
+
+  footer.footer .footer-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer.footer .footer-input,
+  footer.footer .footer-button {
+    width: 80%;
+    margin: 0;
+  }
+
+  footer.footer .footer-input {
+    margin-bottom: 10px;
+    border-right: 2px solid #fff;
+  }
 }

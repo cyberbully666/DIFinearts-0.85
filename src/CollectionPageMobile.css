@@ -1,0 +1,35 @@
+/* =========================
+   MOBILE TWEAKS FOR CATALOGUE PAGE
+   Only for smartphones <= 768px
+========================= */
+@media (max-width: 768px) {
+  /* Scale down the ghost/Artists title */
+  .collection-ghost-title {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+    top: 20px;
+  }
+
+  /* Reduce cover image height for better fit */
+  .artist-cover {
+    height: 150px; /* proportional height */
+    width: auto;
+  }
+
+  /* Overlay images max height */
+  .artist-overlay-img {
+    max-height: 200px;
+    width: auto;
+  }
+
+  /* Batch cards smaller */
+  .batch-main,
+  .batch-preview {
+    width: 140px;
+    height: auto;
+  }
+
+  /* Adjust overlay padding for smaller screens */
+  .artist-overlay {
+    padding: 32px 20px 20px;
+  }
+}

@@ -9,14 +9,14 @@
 .parallax-section {
   position: relative;
   width: 320px;
-  height: 260px;       /* reduced for dramatic parallax */
+  height: 260px;
   border-radius: 12px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -25,11 +25,12 @@
   top: -50%;
   left: 0;
   width: 100%;
-  height: 200%;      /* taller than card */
+  height: 200%;
   background-size: cover;
   background-position: center;
   z-index: 0;
   will-change: transform;
+  transition: transform 0.2s ease-out;
 }
 
 .parallax-section::after {
@@ -39,13 +40,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
 .parallax-button {
   position: relative;
   z-index: 2;
+  display: inline-block;
   color: #fff;
   font-size: 1.3rem;
   font-weight: 600;
@@ -53,10 +55,10 @@
   text-align: center;
   padding: 14px 24px;
   border-radius: 8px;
-
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease, background-color 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.35);
 }
 
 .parallax-button.visible {
@@ -66,21 +68,36 @@
 
 .parallax-section:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
 }
 
 .parallax-button:hover {
-  background-color: rgba(224,169,142,0.85);
+  background-color: rgba(224, 169, 142, 0.85);
+}
+
+@media (max-width: 1024px) {
+  .parallax-section {
+    width: 280px;
+    height: 240px;
+  }
+  .parallax-button {
+    font-size: 1.2rem;
+    padding: 12px 20px;
+  }
 }
 
 @media (max-width: 768px) {
-  .parallax-section {
-    width: 240px;
-    height: 220px;  /* mobile proportionally reduced */
+  .feature-parallax {
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 10px;
   }
-
+  .parallax-section {
+    width: 90%;
+    height: 220px;
+  }
   .parallax-button {
     font-size: 1.1rem;
-    padding: 12px 18px;
+    padding: 10px 16px;
   }
 }

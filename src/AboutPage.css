@@ -1,0 +1,167 @@
+/* =========================
+   HERO
+========================= */
+
+.about-hero {
+  position: relative;
+  height: 55vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(20, 20, 20, 0.6),
+    rgba(20, 20, 20, 0.25)
+  );
+}
+
+/* =========================
+   WRAPPER
+========================= */
+
+.about-wrapper {
+  position: relative;
+  background-color: #fafafa;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  font-family: "Playfair Display", serif;
+}
+
+/* =========================
+   GHOST TEXT (RESPONSIVE)
+========================= */
+
+.about-ghost-text {
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(4rem, 8vw, 6.5rem); /* scales with width, min 4rem, max 6.5rem */
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #000;
+  opacity: 0.08;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* =========================
+   BODY CONTENT
+========================= */
+
+.about-body {
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto; /* top margin now dynamically set via JS */
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 2.4s ease-out, transform 2.4s ease-out;
+}
+
+.about-body.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-body-text {
+  font-size: 1.35rem;
+  line-height: 2;
+  margin-bottom: 36px;
+  color: #222;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* =========================
+   BODY FADE-IN
+========================= */
+
+.fade-in .about-body-text {
+  animation: bodyFadeUp 2.6s ease-out forwards;
+}
+
+.fade-in .delay-1 { animation-delay: 0.4s; }
+.fade-in .delay-2 { animation-delay: 0.8s; }
+.fade-in .delay-3 { animation-delay: 1.2s; }
+.fade-in .delay-4 { animation-delay: 1.6s; }
+
+@keyframes bodyFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  .about-ghost-text {
+    font-size: clamp(2.5rem, 15vw, 4.2rem);
+    top: 35px;
+  }
+
+  .about-body-text {
+    font-size: 1.15rem;
+  }
+}
+/* =========================
+   Ensure Footer spacing on About Page
+========================= */
+@media (max-width: 768px) {
+  .about-wrapper {
+    padding-bottom: 80px; /* extra space so content doesn't touch footer */
+  }
+}
+/* =========================
+   Mobile Adjustments for About Page
+========================= */
+@media (max-width: 768px) {
+  .about-ghost-text {
+    font-size: clamp(2.5rem, 12vw, 4rem); /* smaller but proportional */
+    top: 15px; /* a bit closer to the top */
+  }
+
+  .about-wrapper {
+    padding-top: 100px; /* reduce top padding for smaller screens */
+    padding-bottom: 80px; /* ensure space above footer */
+  }
+
+  .about-body {
+    max-width: 90%; /* slightly narrower on small screens */
+  }
+
+  .about-body-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+}
+/* =========================
+   Mobile Hero Adjustments
+========================= */
+@media (max-width: 768px) {
+  .about-hero {
+    height: 40vh; /* reduce hero height on small screens */
+  }
+
+  .about-hero-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(20, 20, 20, 0.6),
+      rgba(20, 20, 20, 0.35)
+    );
+  }
+
+  .about-ghost-text {
+    top: 10px;           /* move ghost text closer to top */
+    font-size: clamp(2rem, 10vw, 3.5rem); /* slightly smaller for extra-small screens */
+  }
+}

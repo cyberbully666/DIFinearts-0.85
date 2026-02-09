@@ -1,0 +1,85 @@
+/* =========================
+   HERO & PARALLAX IMAGES
+========================= */
+
+/* Hero background images */
+.hero {
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content img,
+.hero img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* Parallax section background images */
+.parallax-bg {
+  background-size: cover;
+  background-position: center;
+}
+
+/* =========================
+   CATALOGUE / COLLECTION PAGE IMAGES
+========================= */
+
+/* Artist grid cover images */
+.collection-page .artist-cover {
+  height: 220px;         /* fixed height */
+  width: auto;           /* width scales proportionally */
+  object-fit: contain;   /* never crop */
+  max-width: 100%;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Artist overlay grid images */
+.collection-page .artist-overlay-img {
+  height: auto;
+  max-height: 350px;     /* cap max height */
+  width: auto;
+  object-fit: contain;   /* maintain proportions */
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Batch previews */
+.collection-page .batch-main,
+.collection-page .batch-preview {
+  height: auto;
+  max-height: 350px;      /* same as overlay images */
+  width: auto;
+  object-fit: contain;    /* never crop */
+  display: block;
+}
+
+/* Lightbox */
+.collection-page .lightbox-img {
+  width: auto;
+  height: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* =========================
+   LIMIT SCALING ON MOBILE
+========================= */
+@media (max-width: 768px) {
+  .collection-page .artist-cover {
+    height: 180px;
+  }
+  .collection-page .artist-overlay-img,
+  .collection-page .batch-main,
+  .collection-page .batch-preview {
+    max-height: 250px;
+  }
+}

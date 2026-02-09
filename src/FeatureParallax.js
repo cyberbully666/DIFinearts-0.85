@@ -1,21 +1,22 @@
-// src/FeatureParallax.js
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import "./FeatureParallax.css";
 
 import exploreArtistsImg from "./assets/artworks/explore-artists.jpg";
 import breedCultureImg from "./assets/artworks/breed-culture.jpg";
 
 const features = [
-  { title: "Explore Artists", image: exploreArtistsImg, link: "/explore-artists" },
-  { title: "Breed Culture", image: breedCultureImg, link: "/breed-culture" },
+  { title: "Explore Artists", image: exploreArtistsImg, link: "/catalogue" },
+  { title: "Breed Culture", image: breedCultureImg, link: "/about" },
 ];
 
 function FeatureParallax() {
   const sectionRefs = useRef([]);
   const bgRefs = useRef([]);
+  const positions = useRef([]);
   const [visible, setVisible] = useState([]);
-  const positions = useRef([]); // current Y positions for easing
 
+  // Fade-in buttons on scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -40,10 +41,11 @@ function FeatureParallax() {
     return () => observer.disconnect();
   }, []);
 
+  // Parallax effect
   useEffect(() => {
     features.forEach((_, i) => (positions.current[i] = 0));
-
     const lerp = (start, end, amt) => start + (end - start) * amt;
+    let animationFrame;
 
     const updateParallax = () => {
       sectionRefs.current.forEach((ref, index) => {
@@ -52,19 +54,22 @@ function FeatureParallax() {
           const cardHeight = rect.height;
           const windowHeight = window.innerHeight;
 
-          const visiblePercent = Math.min(Math.max((windowHeight - rect.top) / (windowHeight + cardHeight), 0), 1);
-          const targetTranslate = (visiblePercent - 0.5) * 2 * 250;
+          const visiblePercent = Math.min(
+            Math.max((windowHeight - rect.top) / (windowHeight + cardHeight), 0),
+            1
+          );
 
+          const targetTranslate = (visiblePercent - 0.5) * 2 * 150;
           positions.current[index] = lerp(positions.current[index], targetTranslate, 0.1);
+
           bgRefs.current[index].style.transform = `translateY(${positions.current[index]}px) scale(1.5)`;
         }
       });
-
-      requestAnimationFrame(updateParallax);
+      animationFrame = requestAnimationFrame(updateParallax);
     };
 
-    requestAnimationFrame(updateParallax);
-    return () => cancelAnimationFrame(updateParallax);
+    animationFrame = requestAnimationFrame(updateParallax);
+    return () => cancelAnimationFrame(animationFrame);
   }, []);
 
   return (
@@ -81,12 +86,12 @@ function FeatureParallax() {
             ref={(el) => (bgRefs.current[index] = el)}
             style={{ backgroundImage: `url(${feature.image})` }}
           />
-          <a
-            href={feature.link}
+          <Link
+            to={feature.link}
             className={`parallax-button ${visible[index] ? "visible" : ""}`}
           >
             {feature.title}
-          </a>
+          </Link>
         </div>
       ))}
     </section>
