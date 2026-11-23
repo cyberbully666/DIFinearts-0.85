@@ -201,8 +201,10 @@
   border-radius: 6px;
 }
 
-/* ---------- Buttons ---------- */
+/* ---------- Buttons (framed, like the rest of the site) ---------- */
 .pt-btn {
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -211,18 +213,36 @@
   font-size: 15px;
   font-weight: 600;
   padding: 12px 22px;
-  border-radius: 6px;
+  border-radius: 1px;
   border: 1px solid var(--pt-accent);
   background: var(--pt-accent);
   color: #fff;
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
   align-self: flex-start;
+  margin: 4px;
 }
 
-.pt-btn:hover {
-  background: #000;
+.pt-btn::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border: 1px solid var(--pt-accent);
+  opacity: 0.3;
+  pointer-events: none;
+  transition: inset 0.25s ease, opacity 0.25s ease, border-color 0.25s ease;
+}
+
+.pt-btn:hover:not(:disabled) {
+  background: #2c3e73;
+  border-color: #2c3e73;
+}
+
+.pt-btn:hover:not(:disabled)::after {
+  inset: -3px;
+  opacity: 1;
+  border-color: #2c3e73;
 }
 
 .pt-btn:disabled {
@@ -231,12 +251,19 @@
 }
 
 .pt-btn-ghost {
-  background: transparent;
+  background: linear-gradient(var(--pt-accent), var(--pt-accent)) no-repeat left / 0% 100%;
   color: var(--pt-ink);
+  transition: background-size 0.35s ease, color 0.25s ease;
 }
 
-.pt-btn-ghost:hover {
-  background: #efece6;
+.pt-btn-ghost::after {
+  display: none;
+}
+
+.pt-btn-ghost:hover:not(:disabled) {
+  background: linear-gradient(var(--pt-accent), var(--pt-accent)) no-repeat left / 100% 100%;
+  border-color: var(--pt-accent);
+  color: #fff;
 }
 
 .pt-btn-sm {
@@ -245,7 +272,7 @@
 }
 
 .pt-btn-block {
-  width: 100%;
+  width: auto;
   align-self: stretch;
 }
 

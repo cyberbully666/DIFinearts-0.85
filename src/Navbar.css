@@ -52,6 +52,7 @@
 .df-nav-cta {
   padding: 10px 18px;
   font-size: 15px;
+  margin: 0;
 }
 
 .df-nav-toggle {
@@ -103,7 +104,7 @@
   }
 
   .df-nav-cta {
-    margin-top: 16px;
+    margin: 22px 6px 6px;
     padding: 14px 18px;
   }
 }

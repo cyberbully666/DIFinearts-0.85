@@ -26,7 +26,13 @@ body {
   outline-offset: 3px;
 }
 
+/* Buttons: framed like a painting.
+   Main buttons carry a thin outer frame that tightens on hover;
+   quiet buttons fill from left to right. */
 .df-btn {
+  --frame: var(--df-ink);
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -34,13 +40,24 @@ body {
   font-size: 16px;
   font-weight: 600;
   padding: 14px 26px;
-  border-radius: 2px;
+  border-radius: 1px;
   border: 1px solid var(--df-ink);
   background: var(--df-ink);
   color: var(--df-white);
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  margin: 5px;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.df-btn::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1px solid var(--frame);
+  opacity: 0.35;
+  pointer-events: none;
+  transition: inset 0.25s ease, opacity 0.25s ease, border-color 0.25s ease;
 }
 
 .df-btn:hover {
@@ -48,13 +65,28 @@ body {
   border-color: var(--df-indigo);
 }
 
+.df-btn:hover::after {
+  inset: -3px;
+  opacity: 1;
+  border-color: var(--df-indigo);
+}
+
+.df-btn:active::after {
+  inset: -1px;
+}
+
 .df-btn-quiet {
-  background: transparent;
+  background: linear-gradient(var(--df-ink), var(--df-ink)) no-repeat left / 0% 100%;
   color: var(--df-ink);
+  transition: background-size 0.35s ease, color 0.25s ease;
+}
+
+.df-btn-quiet::after {
+  display: none;
 }
 
 .df-btn-quiet:hover {
-  background: var(--df-ink);
+  background: linear-gradient(var(--df-ink), var(--df-ink)) no-repeat left / 100% 100%;
   border-color: var(--df-ink);
   color: var(--df-white);
 }

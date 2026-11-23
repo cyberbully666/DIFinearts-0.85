@@ -53,8 +53,8 @@
 .df-hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 36px;
+  gap: 10px;
+  margin: 32px 0 0 -5px;
 }
 
 /* The gallery wall */
@@ -325,7 +325,7 @@
 
 .df-center {
   text-align: center;
-  margin-top: 56px;
+  margin-top: 52px;
 }
 
 /* ---------- Why art at work ---------- */
@@ -373,7 +373,8 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 18px;
+  gap: 14px;
+  margin-left: -5px;
 }
 
 .df-path-phone {
@@ -384,6 +385,7 @@
 }
 
 .df-path .df-btn-light {
+  --frame: var(--df-white);
   background: var(--df-white);
   color: var(--df-indigo);
   border-color: var(--df-white);
@@ -392,6 +394,10 @@
 .df-path .df-btn-light:hover {
   background: transparent;
   color: var(--df-white);
+  border-color: var(--df-white);
+}
+
+.df-path .df-btn-light:hover::after {
   border-color: var(--df-white);
 }
 
