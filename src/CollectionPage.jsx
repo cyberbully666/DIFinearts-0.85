@@ -21,7 +21,7 @@ const CollectionPage = () => {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [lightboxIndex]);
+  }); // re-attach after each render so the handler always sees the latest state
 
   // Adjust grid margin to allow slight overlap with ghost title
   useEffect(() => {
