@@ -174,6 +174,20 @@ export default function CataloguePage() {
     return [...names].sort((a, b) => a.localeCompare(b));
   }, [allWorks]);
 
+  // One small image per artist for the filter: their cover if we have one,
+  // otherwise their first work.
+  const thumbs = useMemo(() => {
+    const map = {};
+    artists.forEach((a) => {
+      map[a.name] = a.cover;
+    });
+    allWorks.forEach((w) => {
+      if (!map[w.artist]) map[w.artist] = w.src;
+    });
+    return map;
+  }, [allWorks]);
+  const mosaic = artists.slice(0, 4).map((a) => a.cover);
+
   const works = selected ? allWorks.filter((w) => w.artist === selected) : allWorks;
 
   const choose = (name) => {
@@ -198,20 +212,34 @@ export default function CataloguePage() {
         </p>
       </header>
 
-      <nav className="cat-filter" aria-label="Filter by artist">
-        <button className={!selected ? "on" : ""} onClick={() => choose("")} aria-pressed={!selected}>
-          All artists
-        </button>
-        {artistNames.map((name) => (
+      <nav className={`cat-filter ${selected ? "has-choice" : ""}`} aria-label="Filter by artist">
+        <div className="cat-filter-row">
           <button
-            key={name}
-            className={selected === name ? "on" : ""}
-            onClick={() => choose(name)}
-            aria-pressed={selected === name}
+            className={`cat-chip ${!selected ? "on" : ""}`}
+            onClick={() => choose("")}
+            aria-pressed={!selected}
           >
-            {name}
+            <span className="cat-chip-art cat-chip-mosaic" aria-hidden="true">
+              {mosaic.map((src, i) => (
+                <img key={i} src={src} alt="" />
+              ))}
+            </span>
+            <span className="cat-chip-name">All artists</span>
           </button>
-        ))}
+          {artistNames.map((name) => (
+            <button
+              key={name}
+              className={`cat-chip ${selected === name ? "on" : ""}`}
+              onClick={() => choose(name)}
+              aria-pressed={selected === name}
+            >
+              <span className="cat-chip-art" aria-hidden="true">
+                <img src={thumbs[name]} alt="" loading="lazy" />
+              </span>
+              <span className="cat-chip-name">{name}</span>
+            </button>
+          ))}
+        </div>
       </nav>
 
       <section className="cat-wall">
