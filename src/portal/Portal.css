@@ -1,0 +1,635 @@
+/* Artist portal, admin and legal pages. Classes are prefixed "pt-" so they
+   never clash with the rest of the site. */
+
+.pt-page,
+.pt-public {
+  --pt-ink: #1a1a1a;
+  --pt-muted: #6b6b6b;
+  --pt-line: #e4e1dc;
+  --pt-paper: #faf8f5;
+  --pt-card: #ffffff;
+  --pt-accent: #1a1a1a;
+  --pt-green: #2f6b3f;
+  --pt-green-bg: #e9f2ea;
+  --pt-amber: #8a5a00;
+  --pt-amber-bg: #fbf1dc;
+  --pt-red: #a12a22;
+  --pt-red-bg: #fbe9e7;
+  --pt-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --pt-serif: "Playfair Display", Georgia, serif;
+
+  font-family: var(--pt-sans);
+  color: var(--pt-ink);
+  line-height: 1.55;
+}
+
+.pt-page {
+  background: var(--pt-paper);
+  /* extend the background colour to the full screen width */
+  box-shadow: 0 0 0 100vmax var(--pt-paper);
+  clip-path: inset(0 -100vmax);
+  min-height: calc(100vh - 121px);
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+  box-sizing: border-box;
+}
+
+.pt-page *,
+.pt-public * {
+  box-sizing: border-box;
+}
+
+.pt-narrow {
+  max-width: 640px;
+}
+
+.pt-eyebrow {
+  margin: 0 0 6px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pt-muted);
+}
+
+.pt-title {
+  font-family: var(--pt-serif);
+  font-weight: 600;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.15;
+  margin: 0 0 12px;
+}
+
+.pt-subtitle {
+  font-family: var(--pt-serif);
+  font-weight: 600;
+  font-size: 20px;
+  margin: 12px 0 4px;
+}
+
+.pt-lead {
+  font-size: 17px;
+  color: #3d3d3d;
+  margin: 0 0 28px;
+}
+
+.pt-muted {
+  color: var(--pt-muted);
+  font-size: 14px;
+}
+
+.pt-center {
+  text-align: center;
+}
+
+.pt-card {
+  background: var(--pt-card);
+  border: 1px solid var(--pt-line);
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.pt-info {
+  background: #f3f1ec;
+}
+
+.pt-alert {
+  background: var(--pt-amber-bg);
+  border-color: #efd9a8;
+}
+
+.pt-empty {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+/* ---------- Forms ---------- */
+.pt-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pt-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.pt-field > span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #3d3d3d;
+}
+
+.pt-field input,
+.pt-field textarea,
+.pt-note-input {
+  font: inherit;
+  font-size: 15px;
+  padding: 10px 12px;
+  border: 1px solid #cfcac2;
+  border-radius: 6px;
+  background: #fff;
+  color: var(--pt-ink);
+  width: 100%;
+}
+
+.pt-field textarea {
+  resize: vertical;
+}
+
+.pt-field input:focus,
+.pt-field textarea:focus,
+.pt-note-input:focus {
+  outline: 2px solid var(--pt-ink);
+  outline-offset: 1px;
+  border-color: var(--pt-ink);
+}
+
+.pt-row {
+  display: flex;
+  gap: 16px;
+}
+
+.pt-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.pt-check input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--pt-ink);
+  flex-shrink: 0;
+}
+
+.pt-option {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--pt-line);
+  border-radius: 8px;
+}
+
+.pt-error {
+  color: var(--pt-red);
+  font-size: 14px;
+  margin: 0;
+}
+
+.pt-success {
+  color: var(--pt-green);
+  font-size: 14px;
+  margin: 0;
+}
+
+.pt-note {
+  font-size: 14px;
+  background: var(--pt-red-bg);
+  color: var(--pt-red);
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+/* ---------- Buttons ---------- */
+.pt-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: 6px;
+  border: 1px solid var(--pt-accent);
+  background: var(--pt-accent);
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+  align-self: flex-start;
+}
+
+.pt-btn:hover {
+  background: #000;
+}
+
+.pt-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pt-btn-ghost {
+  background: transparent;
+  color: var(--pt-ink);
+}
+
+.pt-btn-ghost:hover {
+  background: #efece6;
+}
+
+.pt-btn-sm {
+  padding: 8px 14px;
+  font-size: 14px;
+}
+
+.pt-btn-block {
+  width: 100%;
+  align-self: stretch;
+}
+
+.pt-link-btn {
+  font: inherit;
+  font-size: 14px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--pt-ink);
+  text-decoration: underline;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.pt-danger {
+  color: var(--pt-red);
+}
+
+/* ---------- Legal documents ---------- */
+.pt-doc {
+  border: 1px solid var(--pt-line);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.pt-doc-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.pt-doc-body,
+.pt-legal {
+  white-space: pre-wrap;
+  font-size: 14px;
+  color: #333;
+}
+
+.pt-doc-body {
+  margin-top: 12px;
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 12px;
+  background: var(--pt-paper);
+  border-radius: 6px;
+}
+
+.pt-legal {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.pt-doc-form {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--pt-line);
+}
+
+/* ---------- Dashboard layout ---------- */
+.pt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.pt-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--pt-line);
+  margin-bottom: 24px;
+  overflow-x: auto;
+}
+
+.pt-tabs button {
+  font: inherit;
+  font-size: 15px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 10px 16px;
+  color: var(--pt-muted);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.pt-tabs button.active {
+  color: var(--pt-ink);
+  border-bottom-color: var(--pt-ink);
+  font-weight: 600;
+}
+
+.pt-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.pt-filter button {
+  font: inherit;
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--pt-line);
+  background: #fff;
+  cursor: pointer;
+}
+
+.pt-filter button span {
+  color: var(--pt-muted);
+  margin-left: 4px;
+}
+
+.pt-filter button.active {
+  background: var(--pt-ink);
+  color: #fff;
+  border-color: var(--pt-ink);
+}
+
+.pt-filter button.active span {
+  color: #ccc;
+}
+
+.pt-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.pt-badge-pending {
+  background: var(--pt-amber-bg);
+  color: var(--pt-amber);
+}
+
+.pt-badge-approved {
+  background: var(--pt-green-bg);
+  color: var(--pt-green);
+}
+
+.pt-badge-rejected {
+  background: var(--pt-red-bg);
+  color: var(--pt-red);
+}
+
+.pt-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.pt-list-item h3,
+.pt-art h3 {
+  font-family: var(--pt-serif);
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.pt-list-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.pt-list-head p {
+  margin: 4px 0 0;
+}
+
+.pt-details {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.pt-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.pt-note-input {
+  flex: 1;
+  min-width: 160px;
+  padding: 7px 10px;
+  font-size: 14px;
+}
+
+.pt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.pt-table th,
+.pt-table td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--pt-line);
+}
+
+.pt-table th {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--pt-muted);
+}
+
+/* ---------- Artwork cards ---------- */
+.pt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.pt-art {
+  background: #fff;
+  border: 1px solid var(--pt-line);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pt-art-img {
+  aspect-ratio: 4 / 3;
+  background: #f0ede8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  width: 100%;
+}
+
+.pt-art-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.pt-zoomable {
+  cursor: zoom-in;
+}
+
+.pt-art-body {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.pt-art-body p {
+  margin: 0;
+}
+
+.pt-art-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.pt-price {
+  font-weight: 600;
+  margin: 6px 0 10px !important;
+}
+
+.pt-art-body .pt-btn {
+  margin-top: auto;
+}
+
+/* ---------- Upload ---------- */
+.pt-upload {
+  display: flex;
+  gap: 20px;
+}
+
+.pt-dropzone {
+  flex: 0 0 240px;
+  height: 240px;
+  border: 2px dashed #cfcac2;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  color: var(--pt-muted);
+  cursor: pointer;
+  background: var(--pt-paper);
+  overflow: hidden;
+  padding: 12px;
+}
+
+.pt-dropzone:hover {
+  border-color: var(--pt-ink);
+}
+
+.pt-dropzone strong {
+  color: var(--pt-ink);
+  font-size: 15px;
+}
+
+.pt-dropzone img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.pt-dropzone input {
+  display: none;
+}
+
+.pt-upload-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* ---------- Lightbox ---------- */
+.pt-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: zoom-out;
+  padding: 24px;
+}
+
+.pt-lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ---------- Public catalogue section ---------- */
+.pt-public {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+.pt-public-head {
+  margin-bottom: 28px;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 700px) {
+  .pt-page {
+    padding: 32px 16px 64px;
+  }
+
+  .pt-row,
+  .pt-upload,
+  .pt-header {
+    flex-direction: column;
+  }
+
+  .pt-dropzone {
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  .pt-card {
+    padding: 18px;
+  }
+
+  .pt-table {
+    font-size: 14px;
+  }
+}
