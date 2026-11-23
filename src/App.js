@@ -2,9 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./Navbar";
-import HeroSection from "./HeroSection";
-import AboutSection from "./AboutSection";
-import FeatureParallax from "./FeatureParallax";
+import HomePage from "./home/HomePage";
 import Footer from "./Footer";
 
 import AboutPage from "./AboutPage";
@@ -20,6 +18,7 @@ import LegalPage from "./portal/LegalPage";
 import NewArtworks from "./portal/NewArtworks";
 
 import "./AppStyles.css";
+import "./theme.css";
 
 function App() {
   return (
@@ -35,9 +34,7 @@ function App() {
             path="/"
             element={
               <>
-                <HeroSection />
-                <AboutSection />
-                <FeatureParallax />
+                <HomePage />
                 <Footer />
               </>
             }

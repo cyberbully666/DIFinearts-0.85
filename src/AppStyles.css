@@ -20,44 +20,6 @@ img {
 /* =========================
    NAVBAR
 ========================= */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.navbar-logo img {
-  height: 80px;
-  object-fit: contain;
-}
-
-.navbar-links {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-links li a {
-  text-decoration: none;
-  color: #444;
-  font-weight: 500;
-  font-size: 16px;
-  transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.navbar-links li a:hover {
-  color: #000;
-  transform: scale(1.1);
-}
-
 /* =========================
    HERO SECTION
 ========================= */

@@ -1,49 +1,58 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "./assets/logo.jpg";
 import "./Footer.css";
+
+const EMAIL = "difinearts.official@gmail.com";
+const PHONE = "+91 88007 54221";
+const PHONE_LINK = "+918800754221";
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="footer-main">
-        {/* Column 1: Contact */}
-        <div className="footer-col">
-          <h3 className="footer-title">Get in Touch</h3>
-          <p>Phone: +91 8800754221</p>
-          <p>Email: difinearts.official@gmail.com</p>
-          <p>Address: 100 Shivalik Apartments, Alaknanda, New Delhi 110019</p>
+    <footer className="df-footer">
+      <div className="df-footer-inner">
+        <div className="df-footer-brand">
+          <img src={logo} alt="DIFinearts" />
+          <p>
+            Original contemporary art for workplaces, curated in New Delhi.
+          </p>
         </div>
 
-        {/* Column 2: Newsletter */}
-        <div className="footer-col">
-          <h3 className="footer-title">Newsletter</h3>
-          <p>Subscribe to our newsletter to get updates.</p>
-          <form className="footer-form" onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="email"
-              className="footer-input"
-              placeholder="Your email"
-              required
-            />
-            <button type="submit" className="footer-button">
-              Subscribe
-            </button>
-          </form>
+        <div className="df-footer-col">
+          <h2>Visit or write to us</h2>
+          <address>
+            100 Shivalik Apartments
+            <br />
+            Alaknanda, New Delhi 110019
+          </address>
+          <p>
+            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+            <br />
+            <a href={`tel:${PHONE_LINK}`}>{PHONE}</a>
+          </p>
         </div>
 
-        {/* Column 3: Quick Links */}
-        <div className="footer-col">
-          <h3 className="footer-title">Quick Links</h3>
-          <ul className="footer-links">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
+        <div className="df-footer-col">
+          <h2>Explore</h2>
+          <ul>
             <li><Link to="/catalogue">Catalogue</Link></li>
+            <li><Link to="/about">About us</Link></li>
+            <li><Link to="/artists/join">Join as an artist</Link></li>
+            <li><Link to="/artists/login">Artist login</Link></li>
+          </ul>
+        </div>
+
+        <div className="df-footer-col">
+          <h2>Agreements</h2>
+          <ul>
+            <li><Link to="/legal/artist-agreement">Artist agreement</Link></li>
+            <li><Link to="/legal/terms-of-use">Terms of use</Link></li>
           </ul>
         </div>
       </div>
 
-      <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} DIfinearts. All rights reserved.</p>
+      <div className="df-footer-base">
+        <p>© {new Date().getFullYear()} DIFinearts. All rights reserved.</p>
       </div>
     </footer>
   );

@@ -1,51 +1,65 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "./portal/AuthContext";
+import logo from "./assets/logo.jpg";
 import "./Navbar.css";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { pathname } = useLocation();
   const { user, isAdmin } = useAuth();
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
 
   const portalLink = !user
-    ? { to: "/artists/join", label: "For Artists" }
+    ? { to: "/artists/join", label: "For artists" }
     : isAdmin
     ? { to: "/admin", label: "Admin" }
-    : { to: "/portal", label: "My Portal" };
+    : { to: "/portal", label: "My portal" };
+
+  const links = [
+    { to: "/catalogue", label: "Catalogue" },
+    { to: "/about", label: "About" },
+    portalLink,
+  ];
 
   return (
-    <nav className="navbar">
-      <div className="navbar-logo">
-        <Link to="/" onClick={closeMenu}>
-          <img
-            src="https://raw.githubusercontent.com/cyberbully666/difinearts/main/logo.jpg"
-            alt="DIFinearts Logo"
-          />
+    <header className="df-nav">
+      <div className="df-nav-inner">
+        <Link to="/" className="df-nav-logo" onClick={closeMenu} aria-label="DIFinearts home">
+          <img src={logo} alt="DIFinearts" />
         </Link>
+
+        <button
+          className="df-nav-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-expanded={menuOpen}
+          aria-controls="df-nav-links"
+        >
+          {menuOpen ? "Close" : "Menu"}
+        </button>
+
+        <nav id="df-nav-links" className={`df-nav-links ${menuOpen ? "open" : ""}`}>
+          {links.map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              onClick={closeMenu}
+              className={pathname === l.to ? "active" : ""}
+            >
+              {l.label}
+            </Link>
+          ))}
+          <a
+            className="df-btn df-nav-cta"
+            href="mailto:difinearts.official@gmail.com?subject=Art%20for%20our%20office"
+            onClick={closeMenu}
+          >
+            Talk to a curator
+          </a>
+        </nav>
       </div>
-
-      <ul className={`navbar-links ${menuOpen ? "active" : ""}`}>
-        <li>
-          <Link to="/" onClick={closeMenu}>Home</Link>
-        </li>
-        <li>
-          <Link to="/about" onClick={closeMenu}>About</Link>
-        </li>
-        <li>
-          <Link to="/catalogue" onClick={closeMenu}>Catalogue</Link>
-        </li>
-        <li>
-          <Link to={portalLink.to} onClick={closeMenu}>{portalLink.label}</Link>
-        </li>
-      </ul>
-
-      <button className="menu-toggle" onClick={toggleMenu} aria-label="Open menu">
-        ☰
-      </button>
-    </nav>
+    </header>
   );
 }
 
