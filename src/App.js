@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import HomePage from "./home/HomePage";
 import Footer from "./Footer";
 
-import AboutPage from "./AboutPage";
+import About from "./about/About";
 import CataloguePage from "./catalogue/CataloguePage";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -40,7 +40,15 @@ function App() {
           />
 
           {/* ABOUT PAGE */}
-          <Route path="/about" element={<AboutPage />} />
+          <Route
+            path="/about"
+            element={
+              <>
+                <About />
+                <Footer />
+              </>
+            }
+          />
 
           {/* COLLECTION / CATALOGUE PAGE */}
           <Route
