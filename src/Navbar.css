@@ -70,11 +70,13 @@
   width: 46px;
   height: 46px;
   padding: 0;
-  border: 1px solid var(--df-ink);
+  border: none;
   border-radius: 1px;
   background: var(--df-white);
   cursor: pointer;
-  box-shadow: 0 6px 10px -6px rgba(30, 25, 15, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(30, 25, 15, 0.06),
+    0 6px 12px -6px rgba(30, 25, 15, 0.45);
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
