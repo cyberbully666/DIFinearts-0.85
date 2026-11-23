@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "./portal/AuthContext";
 import logo from "./assets/logo.jpg";
@@ -10,6 +10,18 @@ function Navbar() {
   const { user, isAdmin } = useAuth();
 
   const closeMenu = () => setMenuOpen(false);
+
+  // Stop the page behind the open menu from scrolling, and close on Escape.
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [menuOpen]);
 
   const portalLink = !user
     ? { to: "/artists/join", label: "For artists" }
@@ -31,12 +43,14 @@ function Navbar() {
         </Link>
 
         <button
-          className="df-nav-toggle"
+          className={`df-nav-toggle ${menuOpen ? "open" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-expanded={menuOpen}
           aria-controls="df-nav-links"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
-          {menuOpen ? "Close" : "Menu"}
+          <span className="df-nav-toggle-line" />
+          <span className="df-nav-toggle-line" />
         </button>
 
         <nav id="df-nav-links" className={`df-nav-links ${menuOpen ? "open" : ""}`}>
@@ -57,6 +71,11 @@ function Navbar() {
           >
             Talk to a curator
           </a>
+          <p className="df-nav-contact">
+            100 Shivalik Apartments, Alaknanda, New Delhi
+            <br />
+            <a href="tel:+918800754221">+91 88007 54221</a>
+          </p>
         </nav>
       </div>
     </header>
