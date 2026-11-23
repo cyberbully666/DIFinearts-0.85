@@ -35,7 +35,7 @@
 
 .df-hero-text {
   align-self: center;
-  padding: 64px clamp(24px, 4vw, 64px) 64px max(var(--df-gutter), calc((100vw - var(--df-max)) / 2 + var(--df-gutter)));
+  padding: 64px clamp(24px, 4vw, 64px) 64px max(var(--df-gutter), calc((100vw - var(--df-max)) / 2));
 }
 
 .df-hero h1 {

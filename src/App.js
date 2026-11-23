@@ -6,7 +6,7 @@ import HomePage from "./home/HomePage";
 import Footer from "./Footer";
 
 import AboutPage from "./AboutPage";
-import CollectionPage from "./CollectionPage";
+import CataloguePage from "./catalogue/CataloguePage";
 import ScrollToTop from "./components/ScrollToTop";
 
 import { AuthProvider } from "./portal/AuthContext";
@@ -15,7 +15,6 @@ import ArtistLogin from "./portal/ArtistLogin";
 import ArtistDashboard from "./portal/ArtistDashboard";
 import AdminDashboard from "./portal/AdminDashboard";
 import LegalPage from "./portal/LegalPage";
-import NewArtworks from "./portal/NewArtworks";
 
 import "./AppStyles.css";
 import "./theme.css";
@@ -48,8 +47,7 @@ function App() {
             path="/catalogue"
             element={
               <>
-                <CollectionPage />
-                <NewArtworks />
+                <CataloguePage />
                 <Footer />
               </>
             }

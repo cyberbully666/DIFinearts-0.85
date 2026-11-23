@@ -173,7 +173,7 @@ export default function HomePage() {
             return (
               <Link
                 key={a.name}
-                to="/catalogue"
+                to={`/catalogue?artist=${encodeURIComponent(a.name)}`}
                 className="df-salon-item"
                 style={{ "--r": r }}
               >
